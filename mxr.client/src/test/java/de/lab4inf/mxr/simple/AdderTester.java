@@ -20,11 +20,15 @@ public class AdderTester {
 
 	Mops<String, Fact2D<Double, Double>, Double> myAdder;
 	Mops<String, FactVA<Double>, Double> myVarDoubleAdder;
+	Mops<String, FactVA<Number>, Double>  myVarNumAdder;
+	Mops<String, FactVA<Integer>, Double> myVarIntAdder; 
 
 	@BeforeEach
 	void setUp() throws Exception {
 		myAdder = new Adder();
-		myVarDoubleAdder = new VarAdder();
+		myVarDoubleAdder = new VarAdder<Double>();
+		myVarNumAdder = new VarAdder<Number>();
+		myVarIntAdder = new VarAdder<Integer>();
 	}
 
 	// Wrong Problem : ADD_ZAHLEN statt ADD_NUM
@@ -155,7 +159,7 @@ public class AdderTester {
 	// ******************************************
 	// Arithmetische Folge : Un=n : FactVA<Double>
 	@Test
-	void testIntegerFolge() {
+	void testDoubleFolge() {
 		Random r = new Random();
 		int laenge = r.nextInt(100);
 		//int laenge = 5;
@@ -164,7 +168,7 @@ public class AdderTester {
 		for (int i = 0; i < laenge; i++) {
 			myArray[i] = Double.valueOf(i);
 		}
-
+		
 		// Partielle Summe einer arithmetischer Folge: S=n*(U0+Un)/2;
 		Double expected = Double.valueOf(((laenge - 1) * laenge) / 2);
 
@@ -195,7 +199,6 @@ public class AdderTester {
 	// Große Zahlen mit Toleranz
 	@Test
 	void testGroßeZahlen_tol() {
-
 		int n = 5;
 		Double zahl1 = Math.pow(10.0, n) + 1.0 / 3.0;
 		Double zahl2 = -Math.pow(10.0, n) - 2.0 / 5.0;
@@ -206,5 +209,45 @@ public class AdderTester {
 		Double actual = myAdder.solve(PROBLEM, facts);
 		assertEquals(expected, actual, 1E-12);
 	}
+	
+	
+
+    // Number Array : Un=n : FactVA<Number> 
+	@Test
+	void testNumberArray() {
+		
+		Number[] array = { 0, 1.0, -3 , 5 ,2.0};
+	
+		FactVA<Number> facts = FactVA.fact(array);
+
+		Double actual = myVarNumAdder.solve(VAR_PROBLEM, facts);
+		Double expected = 5.0;
+	
+		assertEquals(expected, actual);
+	}
+	
+	// Random Integer Array: FactVA<Integer> 
+		@Test
+		void testIntegerArray() {
+			Double expected = 0.0;
+
+			Random r = new Random();
+			int laenge = r.nextInt(100);
+			Integer[] myArray = new Integer[laenge];
+
+			for (int i = 0; i < myArray.length; i++) {
+				myArray[i] = r.nextInt();
+				expected = expected + myArray[i];
+			}
+
+			FactVA<Integer> facts = FactVA.fact(myArray);
+
+			Double actual = myVarIntAdder.solve(VAR_PROBLEM, facts);
+			assertEquals(expected, actual);
+		}
+
+
+	
+	
 
 }
