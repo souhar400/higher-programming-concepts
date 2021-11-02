@@ -1,4 +1,2 @@
-# PG6_G5-mxr
+# hpk-JDK17-Gradle7.2
 
-Lukas Wenning
-Souhail Arab
