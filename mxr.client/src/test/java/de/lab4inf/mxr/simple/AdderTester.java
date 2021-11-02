@@ -215,9 +215,8 @@ public class AdderTester {
     // Number Array : Un=n : FactVA<Number> 
 	@Test
 	void testNumberArray() {
-		
-		Number[] array = { 0, 1.0, -3 , 5 ,2.0};
-	
+
+		Number[] array = { 0, 1.0, -3 , 5 ,2.0};	
 		FactVA<Number> facts = FactVA.fact(array);
 
 		Double actual = myVarNumAdder.solve(VAR_PROBLEM, facts);
@@ -229,8 +228,8 @@ public class AdderTester {
 	// Random Integer Array: FactVA<Integer> 
 		@Test
 		void testIntegerArray() {
+			
 			Double expected = 0.0;
-
 			Random r = new Random();
 			int laenge = r.nextInt(100);
 			Integer[] myArray = new Integer[laenge];

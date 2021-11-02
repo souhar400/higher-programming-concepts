@@ -38,6 +38,8 @@ public class VarAdder <T extends Number> implements Mops<String,FactVA<T>, Doubl
 		
 		
 		for (T i : facts.values()) {	
+			
+			
 			result += i.doubleValue();
 		}
 		
