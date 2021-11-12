@@ -57,4 +57,7 @@ public class MXREngine implements MXR{
 		Key<Problem, Fact> key = new Key<>(p, facts);
 		this.MXRContainer.put(key, solver);	
 	}
+	public Map<?, ?> getMap(){
+		return this.MXRContainer;
+	}
 }
