@@ -1,6 +1,5 @@
 package de.lab4inf.mxr.linearalgebra;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Random;
@@ -13,9 +12,9 @@ import de.lab4inf.mxr.core.Mops;
 import de.lab4inf.mxr.linearalgebra.tools.MathProblem;
 
 public class VecMultTester {
-	Mops<MathProblem, Fact2D<double[], double[]>, double[]> myVecMult;
+	Mops<MathProblem, Fact2D<double[], double[]>, Double> myVecMult;
 	Random r = new Random();
-    //TODO: static double tolerance = 5.2E-12;
+    static double tolerance = 1E-12;
 	
 	
 	@BeforeEach
@@ -40,10 +39,10 @@ public class VecMultTester {
 		}
 
 		Fact2D<double[], double[]> facts = new Fact2D<double[], double[]>(vec1, vec2);
-		double[] actual = myVecMult.solve(MathProblem.MULT, facts);
-		double[] expected = vec2;
+		double actual = myVecMult.solve(MathProblem.MULT, facts);
+		double expected = 0.0;
 
-		assertArrayEquals(actual, expected);
+		assertEquals(expected, actual, tolerance);
 	}
 
 	// ( Double_Array , - Double_Array)
@@ -53,7 +52,7 @@ public class VecMultTester {
 
 		double[] vec1 = new double[size];
 		double[] vec2 = new double[size];
-		double[] expected = new double[size];
+		Double expected = 0.0;
 
 		for (int i = 0; i < size - 1; i++)
 			vec1[i] = r.nextDouble();
@@ -62,13 +61,12 @@ public class VecMultTester {
 			vec2[i] = -vec1[i];
 
 		for (int i = 0; i < size - 1; i++)
-			expected[i] = -Math.pow(vec1[i], 2);
+			expected += -Math.pow(vec1[i], 2);
 
 		Fact2D<double[], double[]> facts = new Fact2D<double[], double[]>(vec1, vec2);
-		double[] actual = myVecMult.solve(MathProblem.MULT, facts);
+		double actual = myVecMult.solve(MathProblem.MULT, facts);
 
-		assertArrayEquals(actual, expected);
-		//TODO: assertArrayEquals(vec1, vec2, tolerance);
+		assertEquals(expected, actual, tolerance);
 	}
 
 	// ( Double_Array , Double_Array)
@@ -78,18 +76,18 @@ public class VecMultTester {
 
 		double[] vec1 = new double[size];
 		double[] vec2 = new double[size];
-		double[] expected = new double[size];
+		Double expected = 0.0;
 
 		for (int i = 0; i < size - 1; i++) {
 			vec1[i] = r.nextDouble();
 			vec2[i] = vec1[i];
-			expected[i] = Math.pow(vec1[i], 2);
+			expected += Math.pow(vec1[i], 2);
 		}
 
 		Fact2D<double[], double[]> facts = Fact2D.fact(vec1, vec2);
-		double[] actual = myVecMult.solve(MathProblem.MULT, facts);
+		Double actual = myVecMult.solve(MathProblem.MULT, facts);
 
-		assertArrayEquals(actual, expected);
+		assertEquals(expected, actual, tolerance);
 	}
 
 	// (Exception: not same size)
@@ -103,7 +101,7 @@ public class VecMultTester {
 
 		try {
 			@SuppressWarnings("unused")
-			double[] actual = myVecMult.solve(MathProblem.MULT, facts);
+			double actual = myVecMult.solve(MathProblem.MULT, facts);
 			fail("Ouuups, Test fails because no exception was thron for wrong dimensions ");
 		} catch (IllegalArgumentException e) {
 			assertEquals(e.getMessage(), "not the same size of vectors");
@@ -117,17 +115,17 @@ public class VecMultTester {
 		int size = r.nextInt(100);
 		double[] vec1 = new double[size];
 		double[] vec2 = new double[size];
-		double[] expected = new double[size];
+		double expected = 0.0;
 
 		for (int i = 0; i < size - 1; i++) {
 			vec1[i] = r.nextDouble();
 			vec2[i] = r.nextDouble();
-			expected[i] = vec1[i] * vec2[i];
+			expected += vec1[i] * vec2[i];
 		}
 		
 		Fact2D<double[], double[]> facts = Fact2D.fact(vec1, vec2);
-		double[] actual = myVecMult.solve(MathProblem.MULT,  facts);
-		assertArrayEquals(actual, expected);
+		double actual = myVecMult.solve(MathProblem.MULT,  facts);
+		assertEquals(expected, actual, tolerance);
 	}
 	
 	//Exception: falsches Problem 
@@ -150,7 +148,7 @@ public class VecMultTester {
 		Fact2D<double[], double[]> facts = new Fact2D<double[], double[]>(vec1, vec2);
 		try {
 			@SuppressWarnings("unused")
-			double[] actual = myVecMult.solve(MathProblem.WRONG, facts);
+			double actual = myVecMult.solve(MathProblem.WRONG, facts);
 			fail("Oups, no exception has been thrown ");
 		}
 		catch( Exception e) {

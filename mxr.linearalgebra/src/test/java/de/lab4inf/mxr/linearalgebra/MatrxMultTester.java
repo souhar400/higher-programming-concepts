@@ -22,9 +22,6 @@ public class MatrxMultTester {
 
 
 	Mops<MathProblem, Fact2D<double[][], double[][]>, double[][]> myMtrxMulti;
-
-    //1E-12
-	
 	
 	final double[][] m1 = {
             {0.0, 1.0, 2.0},
@@ -64,7 +61,7 @@ public class MatrxMultTester {
     	this.myMtrxMulti = new MatrxMult();
     }
     
-    
+    // simple mutli matrix 1 
     @Test
     void multMatrixTest1() {
         expected = new double[][]{
@@ -77,6 +74,7 @@ public class MatrxMultTester {
         MyAssertEquals.assertMatrixEquals(expected, actual,tolerance);
     }
 
+    // simple mutli matrix 2
     @Test
     void multMatrixTest2() {
         expected = new double[][]{
@@ -87,10 +85,9 @@ public class MatrxMultTester {
         Fact2D<double[][], double[][]> facts = Fact2D.fact(m5, m6);
         double[][] actual = myMtrxMulti.solve(MathProblem.MULT, facts);
         MyAssertEquals.assertMatrixEquals(expected, actual,tolerance);
-        
-        
     }
 
+    //matrix mult (2,3)*(2,2)
     @Test
     void wrongDimMatrixTest() {
         try {
@@ -103,6 +100,7 @@ public class MatrxMultTester {
         }
     }
     
+    //wrong problem
     @Test
     void wrongProbTest() {
         try {
@@ -115,7 +113,7 @@ public class MatrxMultTester {
         }
     }
     
-   
+    // hilbert(n)*hilbert(n)^-1
     @Test
 	void hilbertMatrixTest() {
 		double delta = 1.0E-8;
@@ -124,7 +122,6 @@ public class MatrxMultTester {
 			double[][] b = MatrixCreator.createInverseHilbertMatrix(n);
 			double[][] expected = MatrixCreator.createIdMatrix(n);
         	Fact2D<double[][], double[][]> facts = Fact2D.fact(a, b);
-
 			
 			double[][] actual = myMtrxMulti.solve(MathProblem.MULT, facts);
 			MyAssertEquals.assertMatrixEquals(expected, actual, delta);
@@ -155,9 +152,5 @@ public class MatrxMultTester {
 		double[][] trB_trA = myMtrxMulti.solve(MathProblem.MULT, facts1);
 		
 		MyAssertEquals.assertMatrixEquals(trAB, trB_trA, delta);
-
-		
 	}
-
-
 }

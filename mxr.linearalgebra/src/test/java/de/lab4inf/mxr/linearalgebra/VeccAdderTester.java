@@ -19,10 +19,14 @@ public class VeccAdderTester {
     //TODO: static double tolerance = 5.2E-12;
 	
 	
+	
+	
+	
 	@BeforeEach
 	void setUp() throws Exception {
 		this.myVecAdder = new VecAdder();
 	}
+
 
 	// ( Double_Array , {0.0} )
 	@Test

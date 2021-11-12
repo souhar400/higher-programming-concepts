@@ -40,13 +40,7 @@ public class MatrxMult implements Mops<MathProblem, Fact2D<double[][], double[][
 		@NonNull
 		double[][] result = new double[zeilenZahl1][spaltenZahl2];
 		
-		/*
-		for ( int i=0; i<zeilenZahl1; i++ )
-			for (int j =0; j<spaltenZahl2; j++)
-				result[i][j] = 0.0;
-			
-			
-		*/
+	
 		for(int i=0; i< zeilenZahl1; i++ )
 			for( int j=0; j < spaltenZahl2; j++)
 				for( int k=0 ; k< spaltenZahl1; k++)

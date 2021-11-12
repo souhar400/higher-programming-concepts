@@ -52,16 +52,13 @@ public class MatrxAdderTester {
             {1.0/2.0, 1.0/5.0},
 
     };
-
- 
-	
 	
     @BeforeEach
     void setUp() throws Exception {
     	this.myMtrxAdder = new MatrxAdder();
     }
     
-   
+    // simple add test
     @Test
     void testAddMatrix() {
         expected = new double[][]{
@@ -74,6 +71,7 @@ public class MatrxAdderTester {
 		MyAssertEquals.assertMatrixEquals(expected, actual, tolerance);
 	}
     
+    //wrong dimensions
     @Test
     void wrongDimMatrixTest() {
         try {
@@ -86,6 +84,7 @@ public class MatrxAdderTester {
         }
     }
     
+    // wrong problem
     @Test
     void wrongProbTest() {
         try {

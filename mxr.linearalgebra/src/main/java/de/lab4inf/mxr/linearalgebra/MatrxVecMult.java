@@ -7,28 +7,29 @@ import java.util.Objects;
 import de.lab4inf.mxr.core.Fact2D;
 import de.lab4inf.mxr.core.Mops;
 import de.lab4inf.mxr.core.NoSolutionException;
+import de.lab4inf.mxr.linearalgebra.tools.MathProblem;
 
-public class MatrxVecMult implements Mops<String, Fact2D<Double[][], Double[]>, Double[]> {
-	static final String PROBLEM = "MAT_VEC";
+public class MatrxVecMult implements Mops<MathProblem, Fact2D<double[][], double[]>, double[]> {
 
 	@Override
-	public Double[] solve(String p, Fact2D<Double[][], Double[]> facts) throws NoSolutionException {
+	public double[] solve(MathProblem p, Fact2D<double[][], double[]> facts) throws NoSolutionException {
 		Objects.requireNonNull(p, "no problem given");
 		Objects.requireNonNull(facts, "no fact(s) given");
 
-		if (!PROBLEM.equals(p))
-			throw new IllegalArgumentException(format("wrong problem %s != %s", p, PROBLEM));
+		if (!p.equals(MathProblem.MULT))
+			throw new IllegalArgumentException(format("wrong problem"));
 
-		Double[][] matrix1 = facts.u;
-		Double[] vector = facts.v;
+		double[][] matrix = facts.u;
+		double[] vector = facts.v;
 
-		if (matrix1[0].length != vector.length)
+		if (matrix[0].length != vector.length)
 			throw new IllegalArgumentException("Multiplication is because of the dimensions not possible");
 
-		Double[] result = new Double[matrix1[0].length]; 
+		double[] result = new double[matrix.length]; 
+		
 		for (int i =0; i< result.length; i++)
-			for (int j=0; j<matrix1[0].length; j++)
-				result[i] += matrix1[i][j]*vector[j]; 
+			for (int j=0; j<matrix[0].length; j++)
+				result[i] += matrix[i][j]*vector[j]; 
 		return result;
 	}
 }
