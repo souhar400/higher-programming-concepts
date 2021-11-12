@@ -10,6 +10,7 @@ dependencies {
 	implementation project(':mxr.core')
 	//implementation project(':mxr.engine')
 	implementation project(':mxr.client')
+	implementation project(':mxr.linearalgebra')
 }
 
 java {
@@ -30,13 +31,14 @@ allprojects  {
 	repositories {
 		mavenLocal()
 		mavenCentral()
-		// jcenter() deprecated
+		jcenter() 
 	}
 	dependencies {
 		// Use JUnit Jupiter API for testing.
 		testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
 		// Use JUnit Jupiter Engine for testing.
 		testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+	   	
 	}
 	test {
 		// Use junit platform for unit tests
