@@ -13,10 +13,11 @@ import de.lab4inf.mxr.core.NoSolutionException;
 import de.lab4inf.mxr.core.NonNull;
 import de.lab4inf.mxr.linearalgebra.tools.MathProblem;
 
-public class MatrxAdder implements Mops<MathProblem, Fact2D<Double[][], Double[][]>, Double[][]>{
+
+public class MatrxAdder implements Mops<MathProblem, Fact2D<double[][], double[][]>, double[][]>{
 
 	@Override
-	public Double[][] solve(MathProblem p, Fact2D<Double[][], Double[][]> facts) throws NoSolutionException {
+	public double[][] solve(MathProblem p, Fact2D<double[][], double[][]> facts) throws NoSolutionException {
 		
 		Objects.requireNonNull(p, "no problem given");
 		Objects.requireNonNull(facts, "no fact(s) given");
@@ -25,8 +26,8 @@ public class MatrxAdder implements Mops<MathProblem, Fact2D<Double[][], Double[]
 		if (!MathProblem.ADD.equals(p))
 			throw new IllegalArgumentException(format("wrong problem"));
 		
-		Double[][] matrix1 = facts.u; 
-		Double[][] matrix2 = facts.v; 
+		double[][] matrix1 = facts.u; 
+		double[][] matrix2 = facts.v; 
 		
 		
 		if(( matrix1.length != matrix2.length) || (matrix1[0].length != matrix2[0].length)  ) 
@@ -36,8 +37,7 @@ public class MatrxAdder implements Mops<MathProblem, Fact2D<Double[][], Double[]
 		int zeilenZahl = matrix1.length; 
 		
 		@NonNull
-		Double[][] result = new Double[matrix1.length][matrix1[0].length];
-			
+		double[][] result = new double[zeilenZahl][spaltenZahl];
 		for(int i=0; i< zeilenZahl; i++ )
 			for( int j=0; j < spaltenZahl; j++)
 				result[i][j]= matrix1[i][j]+ matrix2[i][j];			

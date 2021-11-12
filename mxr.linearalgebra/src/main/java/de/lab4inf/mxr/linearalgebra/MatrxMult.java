@@ -13,10 +13,10 @@ import de.lab4inf.mxr.core.NoSolutionException;
 import de.lab4inf.mxr.core.NonNull;
 import de.lab4inf.mxr.linearalgebra.tools.MathProblem;
 
-public class MatrxMult implements Mops<MathProblem, Fact2D<Double[][], Double[][]>, Double[][]>{
+public class MatrxMult implements Mops<MathProblem, Fact2D<double[][], double[][]>, double[][]>{
 
 	@Override
-	public Double[][] solve(MathProblem p, Fact2D<Double[][], Double[][]> facts) throws NoSolutionException {
+	public double[][] solve(MathProblem p, Fact2D<double[][], double[][]> facts) throws NoSolutionException {
 		
 		Objects.requireNonNull(p, "no problem given");
 		Objects.requireNonNull(facts, "no fact(s) given");
@@ -25,8 +25,8 @@ public class MatrxMult implements Mops<MathProblem, Fact2D<Double[][], Double[][
 		if (!MathProblem.MULT.equals(p))
 			throw new IllegalArgumentException(format("wrong problem"));
 		
-		Double[][] matrix1 = facts.u; 
-		Double[][] matrix2 = facts.v; 
+		double[][] matrix1 = facts.u; 
+		double[][] matrix2 = facts.v; 
 		
 		int spaltenZahl1 = matrix1[0].length;
 		int zeilenZahl1 = matrix1.length; 
@@ -38,12 +38,15 @@ public class MatrxMult implements Mops<MathProblem, Fact2D<Double[][], Double[][
 			throw new IllegalArgumentException("* Operation is impossible. The matrices have different dimensions");
 
 		@NonNull
-		Double[][] result = new Double[zeilenZahl1][spaltenZahl2];
+		double[][] result = new double[zeilenZahl1][spaltenZahl2];
 		
+		/*
 		for ( int i=0; i<zeilenZahl1; i++ )
 			for (int j =0; j<spaltenZahl2; j++)
 				result[i][j] = 0.0;
 			
+			
+		*/
 		for(int i=0; i< zeilenZahl1; i++ )
 			for( int j=0; j < spaltenZahl2; j++)
 				for( int k=0 ; k< spaltenZahl1; k++)

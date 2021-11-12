@@ -12,10 +12,10 @@ import de.lab4inf.mxr.linearalgebra.tools.MathProblem;
 	
 
 
-public class VecMult implements Mops<MathProblem, Fact2D<Double[], Double[]> , Double[]> {
+public class VecMult implements Mops<MathProblem, Fact2D<double[], double[]> , double[]> {
 
 	@Override
-	public Double[] solve(MathProblem p, Fact2D<Double[], Double[]> facts) throws NoSolutionException {
+	public double[] solve(MathProblem p, Fact2D<double[], double[]> facts) throws NoSolutionException {
 		Objects.requireNonNull(p, "no problem given");
 		Objects.requireNonNull(facts, "no fact(s) given");
 
@@ -29,7 +29,7 @@ public class VecMult implements Mops<MathProblem, Fact2D<Double[], Double[]> , D
 			throw new IllegalArgumentException("not the same size of vectors");
 
 		
-		Double[] myVektor = new Double[size1];
+		double[] myVektor = new double[size1];
 		for (int i =0; i<size1-1; i++)
 			myVektor[i] = facts.u[i] * facts.v[i];
 		return myVektor; 

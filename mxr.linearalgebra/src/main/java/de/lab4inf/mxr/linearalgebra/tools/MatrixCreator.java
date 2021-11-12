@@ -2,24 +2,24 @@ package de.lab4inf.mxr.linearalgebra.tools;
 
 public class MatrixCreator {
 
-	public static Double[] createRndVector(int n) {
-		Double[] x = new Double[n];
+	public static double[] createRndVector(int n) {
+		double[] x = new double[n];
 		for (int i = 0; i < n; i++) {
 			x[i] = Math.random() * 10;
 		}
 		return x;
 	}
 
-	public static Double[][] createRndMatrix(int n, int m) {
-		Double[][] a = new Double[n][m];
+	public static double[][] createRndMatrix(int n, int m) {
+		double[][] a = new double[n][m];
 		for (int i = 0; i < n; i++) {
 			a[i] = createRndVector(m);
 		}
 		return a;
 	}
 	
-	public static Double[][] createHilbertMatrix(int n) {
-		Double hilbert[][] = new Double[n][n];
+	public static double[][] createHilbertMatrix(int n) {
+		double hilbert[][] = new double[n][n];
 
 		for (int i = 1; i <= n ; i++) {
 			for (int j = 1; j <= n ; j++) {
@@ -29,16 +29,16 @@ public class MatrixCreator {
 		return hilbert;
 	}
 
-	public static Double fac(int n) {
-		Double fact = 1.0;
+	public static double fac(int n) {
+		double fact = 1.0;
 		for (int i = 2; i <= n; i++) {
 			fact *= i;
 		}
 		return fact;
 	}
 
-	public static Double[][] createInverseHilbertMatrix(int n) {
-		Double inverse[][] = new Double[n][n];
+	public static double[][] createInverseHilbertMatrix(int n) {
+		double inverse[][] = new double[n][n];
 
 		for (int i = 1; i <= n ; i++) {
 			for (int j = 1; j <= n ; j++) {
@@ -49,8 +49,8 @@ public class MatrixCreator {
 		return inverse;
 	}
 
-	 public static Double[][] createIdMatrix(int n) {
-		Double[][] idMAtrix = new Double[n][n];
+	 public static double[][] createIdMatrix(int n) {
+		double[][] idMAtrix = new double[n][n];
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
 				if (i == j) {
@@ -63,8 +63,8 @@ public class MatrixCreator {
 		return idMAtrix;
 	}
 
-	 public static Double[][] transpose(Double[][] a) {
-		Double[][] transposed = new Double[a[0].length][a.length];
+	 public static double[][] transpose(double[][] a) {
+		double[][] transposed = new double[a[0].length][a.length];
 		for (int i = 0; i < a.length; i++) {
 			for (int j = 0; j < a[0].length; j++) {
 				transposed[j][i] = a[i][j];

@@ -13,7 +13,7 @@ import de.lab4inf.mxr.core.Mops;
 import de.lab4inf.mxr.linearalgebra.tools.MathProblem;
 
 public class VecMultTester {
-	Mops<MathProblem, Fact2D<Double[], Double[]>, Double[]> myVecMult;
+	Mops<MathProblem, Fact2D<double[], double[]>, double[]> myVecMult;
 	Random r = new Random();
     //TODO: static double tolerance = 5.2E-12;
 	
@@ -28,8 +28,8 @@ public class VecMultTester {
 	void zeroVektorMultTest() {
 		int size = r.nextInt(100);
 
-		Double[] vec1 = new Double[size];
-		Double[] vec2 = new Double[size];
+		double[] vec1 = new double[size];
+		double[] vec2 = new double[size];
 
 		for (int i = 0; i < size - 1; i++) {
 			vec1[i] = r.nextDouble();
@@ -39,9 +39,9 @@ public class VecMultTester {
 			vec2[i] = 0.0;
 		}
 
-		Fact2D<Double[], Double[]> facts = new Fact2D<Double[], Double[]>(vec1, vec2);
-		Double[] actual = myVecMult.solve(MathProblem.MULT, facts);
-		Double[] expected = vec2;
+		Fact2D<double[], double[]> facts = new Fact2D<double[], double[]>(vec1, vec2);
+		double[] actual = myVecMult.solve(MathProblem.MULT, facts);
+		double[] expected = vec2;
 
 		assertArrayEquals(actual, expected);
 	}
@@ -51,9 +51,9 @@ public class VecMultTester {
 	void oppositeVektorMultTest() {
 		int size = r.nextInt(100);
 
-		Double[] vec1 = new Double[size];
-		Double[] vec2 = new Double[size];
-		Double[] expected = new Double[size];
+		double[] vec1 = new double[size];
+		double[] vec2 = new double[size];
+		double[] expected = new double[size];
 
 		for (int i = 0; i < size - 1; i++)
 			vec1[i] = r.nextDouble();
@@ -64,8 +64,8 @@ public class VecMultTester {
 		for (int i = 0; i < size - 1; i++)
 			expected[i] = -Math.pow(vec1[i], 2);
 
-		Fact2D<Double[], Double[]> facts = new Fact2D<Double[], Double[]>(vec1, vec2);
-		Double[] actual = myVecMult.solve(MathProblem.MULT, facts);
+		Fact2D<double[], double[]> facts = new Fact2D<double[], double[]>(vec1, vec2);
+		double[] actual = myVecMult.solve(MathProblem.MULT, facts);
 
 		assertArrayEquals(actual, expected);
 		//TODO: assertArrayEquals(vec1, vec2, tolerance);
@@ -76,9 +76,9 @@ public class VecMultTester {
 	void sameVektorMultTest() {
 		int size = r.nextInt(100);
 
-		Double[] vec1 = new Double[size];
-		Double[] vec2 = new Double[size];
-		Double[] expected = new Double[size];
+		double[] vec1 = new double[size];
+		double[] vec2 = new double[size];
+		double[] expected = new double[size];
 
 		for (int i = 0; i < size - 1; i++) {
 			vec1[i] = r.nextDouble();
@@ -86,8 +86,8 @@ public class VecMultTester {
 			expected[i] = Math.pow(vec1[i], 2);
 		}
 
-		Fact2D<Double[], Double[]> facts = Fact2D.fact(vec1, vec2);
-		Double[] actual = myVecMult.solve(MathProblem.MULT, facts);
+		Fact2D<double[], double[]> facts = Fact2D.fact(vec1, vec2);
+		double[] actual = myVecMult.solve(MathProblem.MULT, facts);
 
 		assertArrayEquals(actual, expected);
 	}
@@ -96,14 +96,14 @@ public class VecMultTester {
 	@Test
 	void notSameSizeMultTest() {
 		int size1 = r.nextInt(100);
-		Double[] vec1 = new Double[size1];
-		Double[] vec2 = new Double[size1 + 1];
+		double[] vec1 = new double[size1];
+		double[] vec2 = new double[size1 + 1];
 
-		Fact2D<Double[], Double[]> facts = new Fact2D<Double[], Double[]>(vec1, vec2);
+		Fact2D<double[], double[]> facts = new Fact2D<double[], double[]>(vec1, vec2);
 
 		try {
 			@SuppressWarnings("unused")
-			Double[] actual = myVecMult.solve(MathProblem.MULT, facts);
+			double[] actual = myVecMult.solve(MathProblem.MULT, facts);
 			fail("Ouuups, Test fails because no exception was thron for wrong dimensions ");
 		} catch (IllegalArgumentException e) {
 			assertEquals(e.getMessage(), "not the same size of vectors");
@@ -115,9 +115,9 @@ public class VecMultTester {
 	@Test
 	void twoRandVecMultTest() {
 		int size = r.nextInt(100);
-		Double[] vec1 = new Double[size];
-		Double[] vec2 = new Double[size];
-		Double[] expected = new Double[size];
+		double[] vec1 = new double[size];
+		double[] vec2 = new double[size];
+		double[] expected = new double[size];
 
 		for (int i = 0; i < size - 1; i++) {
 			vec1[i] = r.nextDouble();
@@ -125,8 +125,8 @@ public class VecMultTester {
 			expected[i] = vec1[i] * vec2[i];
 		}
 		
-		Fact2D<Double[], Double[]> facts = Fact2D.fact(vec1, vec2);
-		Double[] actual = myVecMult.solve(MathProblem.MULT,  facts);
+		Fact2D<double[], double[]> facts = Fact2D.fact(vec1, vec2);
+		double[] actual = myVecMult.solve(MathProblem.MULT,  facts);
 		assertArrayEquals(actual, expected);
 	}
 	
@@ -135,8 +135,8 @@ public class VecMultTester {
 	void falseProbTest() {
 		
 		int size = 10;
-		Double[] vec1 = new Double[size];
-		Double[] vec2 = new Double[size];
+		double[] vec1 = new double[size];
+		double[] vec2 = new double[size];
 		
 		for (int i = 0; i < size - 1; i++) 
 			vec1[i] = r.nextDouble();
@@ -147,10 +147,10 @@ public class VecMultTester {
 		
 
 
-		Fact2D<Double[], Double[]> facts = new Fact2D<Double[], Double[]>(vec1, vec2);
+		Fact2D<double[], double[]> facts = new Fact2D<double[], double[]>(vec1, vec2);
 		try {
 			@SuppressWarnings("unused")
-			Double[] actual = myVecMult.solve(MathProblem.WRONG, facts);
+			double[] actual = myVecMult.solve(MathProblem.WRONG, facts);
 			fail("Oups, no exception has been thrown ");
 		}
 		catch( Exception e) {

@@ -6,21 +6,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MyAssertEquals {
 
-	public static void assertRelativEquals(Double expected, Double returned, Double tolerance) {
+	public static void assertRelativEquals(double expected, double returned, double tolerance) {
 		if (Math.abs(expected) > 1) {
 			tolerance *= Math.abs(expected);
 		}
 		assertEquals(expected, returned, tolerance);
 	}
 
-	public static void assertVectorEquals(Double[] expected, Double[] returned, Double tolerance) {
+	public static void assertVectorEquals(double[] expected, double[] returned, double tolerance) {
 		assertEquals(expected.length, returned.length, "different dimension");
 		for (int i = 0; i < returned.length; i++) {
 			assertRelativEquals(expected[i], returned[i], tolerance);
 		}
 	}
 
-	public static void assertMatrixEquals(Double[][] expected, Double[][] returned, Double tolerance) {
+	public static void assertMatrixEquals(double[][] expected, double[][] returned, double tolerance) {
 		assertEquals(expected.length, returned.length, "different dimension (matrix row)");
 		for (int i = 0; i < returned.length; i++) {
 			assertVectorEquals(expected[i], returned[i], tolerance);

@@ -13,40 +13,40 @@ import de.lab4inf.mxr.linearalgebra.tools.MathProblem;
 import de.lab4inf.mxr.linearalgebra.tools.MatrixCreator;
 
 public class MatrxAdderTester {
-	Double[][] expected;
-	Double[][] result;
-	static Double tolerance = 5E-12;
+	double[][] expected;
+	double[][] result;
+	static double tolerance = 5E-12;
 	Random r = new Random();
 	
-	Mops<MathProblem, Fact2D<Double[][], Double[][]>, Double[][]> myMtrxAdder;
+	Mops<MathProblem, Fact2D<double[][], double[][]>, double[][]> myMtrxAdder;
 	
 
-	final Double[][] m1 = {
+	final double[][] m1 = {
             {0.0, 1.0, 2.0},
             {1.0, 2.0, 3.0}
     };
 
-    final Double[][] m2 = {
+    final double[][] m2 = {
             {0.0, 1.0, 2.0},
             {1.0, 2.0, 3.0}
     };
 
-    final Double[][] m3 = {
+    final double[][] m3 = {
             {0.0, 1.0},
             {1.0, 2.0},
             {2.0, 3.0}
     };
-    final Double[][] m4 = {
+    final double[][] m4 = {
             {0.0, 1.0},
             {1.0, 2.0}
     };
 
-    final Double[][] m5 = {
+    final double[][] m5 = {
             {1.0/2.0, 1.0/3.0, 1.0/6.0},
             {1.0/2.0, 1.0/3.0, 1.0/6.0}
     };
 
-    final Double[][] m6 = {
+    final double[][] m6 = {
             {1.0/4.0, 1.0/3.0},
             {1.0/3.0, 1.0/4.0},
             {1.0/2.0, 1.0/5.0},
@@ -64,22 +64,22 @@ public class MatrxAdderTester {
    
     @Test
     void testAddMatrix() {
-        expected = new Double[][]{
+        expected = new double[][]{
                 {0.0, 2.0, 4.0},
                 {2.0, 4.0, 6.0}
         };
         
-        Fact2D<Double[][], Double[][]> facts = Fact2D.fact(m1, m2);
-		Double[][] actual = myMtrxAdder.solve(MathProblem.ADD, facts);
+        Fact2D<double[][], double[][]> facts = Fact2D.fact(m1, m2);
+		double[][] actual = myMtrxAdder.solve(MathProblem.ADD, facts);
 		MyAssertEquals.assertMatrixEquals(expected, actual, tolerance);
 	}
     
     @Test
     void wrongDimMatrixTest() {
         try {
-        	Fact2D<Double[][], Double[][]> facts = Fact2D.fact(m1, m4);
+        	Fact2D<double[][], double[][]> facts = Fact2D.fact(m1, m4);
             @SuppressWarnings("unused")
-			Double[][] actual = myMtrxAdder.solve(MathProblem.ADD, facts);
+			double[][] actual = myMtrxAdder.solve(MathProblem.ADD, facts);
             fail();
         } catch (IllegalArgumentException e) {
             assertEquals(e.getMessage(),"+ Operation is impossible. The matrices have different dimensions");
@@ -89,9 +89,9 @@ public class MatrxAdderTester {
     @Test
     void wrongProbTest() {
         try {
-        	Fact2D<Double[][], Double[][]> facts = Fact2D.fact(m1, m2);
+        	Fact2D<double[][], double[][]> facts = Fact2D.fact(m1, m2);
             @SuppressWarnings("unused")
-			Double[][] actual = myMtrxAdder.solve(MathProblem.WRONG, facts);
+			double[][] actual = myMtrxAdder.solve(MathProblem.WRONG, facts);
             fail();
         } catch (IllegalArgumentException e) {
             assertEquals(e.getMessage(),"wrong problem");
@@ -101,23 +101,23 @@ public class MatrxAdderTester {
   //Tr( A.B) = Tt(B).Tr(A)
   	@Test
   	void addTranspTest() {
-  		Double delta = 1.0E-8;
+  		double delta = 1.0E-8;
 
   		int n = r.nextInt(100); 
   		int m = r.nextInt(100);
   		
-  		Double[][] a= MatrixCreator.createRndMatrix(n, m);
-  		Double[][] b = MatrixCreator.createRndMatrix(n, m);
-      	Fact2D<Double[][], Double[][]> facts = Fact2D.fact(a, b);
+  		double[][] a= MatrixCreator.createRndMatrix(n, m);
+  		double[][] b = MatrixCreator.createRndMatrix(n, m);
+      	Fact2D<double[][], double[][]> facts = Fact2D.fact(a, b);
   		
-  		Double[][] ab = myMtrxAdder.solve(MathProblem.ADD, facts);
-  		Double[][] trAB = MatrixCreator.transpose(ab); 
+  		double[][] ab = myMtrxAdder.solve(MathProblem.ADD, facts);
+  		double[][] trAB = MatrixCreator.transpose(ab); 
   		
-  		Double[][] trA = MatrixCreator.transpose(a); 
-  		Double[][] trB = MatrixCreator.transpose(b); 
+  		double[][] trA = MatrixCreator.transpose(a); 
+  		double[][] trB = MatrixCreator.transpose(b); 
   		
-      	Fact2D<Double[][], Double[][]> facts1 = Fact2D.fact(trB, trA);
-  		Double[][] trB_plus_trA = myMtrxAdder.solve(MathProblem.ADD, facts1);
+      	Fact2D<double[][], double[][]> facts1 = Fact2D.fact(trB, trA);
+  		double[][] trB_plus_trA = myMtrxAdder.solve(MathProblem.ADD, facts1);
   		
   		MyAssertEquals.assertMatrixEquals(trAB, trB_plus_trA, delta);
 
