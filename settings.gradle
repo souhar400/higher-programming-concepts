@@ -9,4 +9,4 @@
 
 rootProject.name = 'pg6_g5-mxr'
 include('mxr.core', 'mxr.client', 'mxr.linearalgebra')
-//include('mxr.engine')
+include('mxr.engine')

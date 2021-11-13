@@ -16,7 +16,7 @@ import de.lab4inf.mxr.core.NoSolutionException;
 import de.lab4inf.mxr.simple.Adder;
 import de.lab4inf.mxr.simple.VarAdder;
  
-class MXREngineTester{
+class MXREngineTester {
 	
 	final static String PROBLEM = "ADD_NUM";
 	final static String VAR_PROBLEM = "ADD_VARNUM";

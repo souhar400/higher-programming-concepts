@@ -8,7 +8,7 @@ plugins {
 
 dependencies {
 	implementation project(':mxr.core')
-	//implementation project(':mxr.engine')
+	implementation project(':mxr.engine')
 	implementation project(':mxr.client')
 	implementation project(':mxr.linearalgebra')
 }
