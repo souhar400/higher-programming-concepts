@@ -13,5 +13,5 @@ plugins {
 
 dependencies {
 	api project(':mxr.core')
-	//api project(':mxr.engine')
+	api project(':mxr.engine')
 }

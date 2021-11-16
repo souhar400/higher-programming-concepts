@@ -32,7 +32,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/mxr.core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/mxr.client"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/mxr.core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/mxr.engine"/>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>

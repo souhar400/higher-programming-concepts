@@ -30,7 +30,7 @@ public class VecAdder implements Mops<MathProblem, Fact2D<double[], double[]>, d
 
 		
 		double[] myVektor = new double[size1];
-		for (int i =0; i<size1-1; i++)
+		for (int i =0; i<= size1-1; i++)
 			myVektor[i] = facts.u[i] + facts.v[i];
 		
 		
