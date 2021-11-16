@@ -117,9 +117,9 @@ public class MatrxMultTester {
     // hilbert(n)*hilbert(n)^-1
     @Test
 	void hilbertMatrixTest() {
-		double delta = 1.0E-5;
-		//double delta = 1.0E-8;
-		for (int n = 1; n <= 9; n++) {
+		//double delta = 1.0E-5;
+		double delta = 1.0E-8;
+		for (int n = 1; n <= 7; n++) {
 			double[][] a = MatrixCreator.createHilbertMatrix(n);
 			double[][] b = MatrixCreator.createInverseHilbertMatrix(n);
 			double[][] expected = MatrixCreator.createIdMatrix(n);

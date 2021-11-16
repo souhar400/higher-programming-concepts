@@ -13,9 +13,7 @@ import de.lab4inf.mxr.core.FactFactory;
 import de.lab4inf.mxr.core.FactVA;
 import de.lab4inf.mxr.core.Mops;
 import de.lab4inf.mxr.core.NoSolutionException;
-import de.lab4inf.mxr.simple.Adder;
-import de.lab4inf.mxr.simple.VarAdder;
- 
+
 class MXREngineTester {
 	
 	final static String PROBLEM = "ADD_NUM";
