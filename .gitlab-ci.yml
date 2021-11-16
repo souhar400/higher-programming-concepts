@@ -35,7 +35,8 @@ unit-test-job:   # This job runs in the test stage.
       junit: 
         -  mxr.core/build/test-results/test/TEST-*.xml  
         -  mxr.engine/build/test-results/test/TEST-*.xml  
-        -  mxr.client/build/test-results/test/TEST-*.xml  
+        -  mxr.client/build/test-results/test/TEST-*.xml 
+        -  mxr.linearalgebra/build/test-results/test/TEST-*.xml   
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
