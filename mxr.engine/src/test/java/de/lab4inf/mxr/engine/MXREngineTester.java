@@ -32,7 +32,7 @@ class MXREngineTester {
 	@BeforeEach
 	void setUp() throws Exception {
 		myAdder = new Adder();
-		myVarDoubleAdder = new VarAdder();
+		myVarDoubleAdder = new VarAdder<>();
 		engine = new MXREngine();
 		dummy2D = FactFactory.facts(1.0, 2.0);
 		dummy3D = FactFactory.facts(1.0, 2.0, 3.0);
@@ -50,7 +50,7 @@ class MXREngineTester {
 	@Test
 	void testFindSolver() {
 		Mops<String, Fact2D<Double, Double>, Double> add1 = new Adder();
-		Mops<String, FactVA<Double>, Double> varAdd1 = new VarAdder();
+		Mops<String, FactVA<Double>, Double> varAdd1 = new VarAdder<Double>();
 		engine.register(MXREngineTester.PROBLEM, dummy2D, add1);
 		engine.register(MXREngineTester.VAR_PROBLEM, va, varAdd1);
 		assertNotNull(engine.findSolver("ADD_VARNUM", va));
