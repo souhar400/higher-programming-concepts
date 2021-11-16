@@ -15,7 +15,7 @@ import de.lab4inf.mxr.linearalgebra.tools.MatrixCreator;
 public class MatrxAdderTester {
 	double[][] expected;
 	double[][] result;
-	static double tolerance = 5E-12;
+	static double tolerance = 1.0E-8;
 	Random r = new Random();
 	
 	Mops<MathProblem, Fact2D<double[][], double[][]>, double[][]> myMtrxAdder;
@@ -58,7 +58,7 @@ public class MatrxAdderTester {
     	this.myMtrxAdder = new MatrxAdder();
     }
     
-    // simple add test
+    // SIMPLE add test
     @Test
     void testAddMatrix() {
         expected = new double[][]{
@@ -97,7 +97,7 @@ public class MatrxAdderTester {
         }
     }
     
-  //Tr( A.B) = Tt(B).Tr(A)
+  //Tr( A+B) = Tt(B) + Tr(A)
   	@Test
   	void addTranspTest() {
   		double delta = 1.0E-8;
@@ -109,16 +109,16 @@ public class MatrxAdderTester {
   		double[][] b = MatrixCreator.createRndMatrix(n, m);
       	Fact2D<double[][], double[][]> facts = Fact2D.fact(a, b);
   		
-  		double[][] ab = myMtrxAdder.solve(MathProblem.ADD, facts);
-  		double[][] trAB = MatrixCreator.transpose(ab); 
+  		double[][] aPlusb = myMtrxAdder.solve(MathProblem.ADD, facts);
+  		double[][] tr_aPlusb = MatrixCreator.transponieren(aPlusb); 
   		
-  		double[][] trA = MatrixCreator.transpose(a); 
-  		double[][] trB = MatrixCreator.transpose(b); 
+  		double[][] trA = MatrixCreator.transponieren(a); 
+  		double[][] trB = MatrixCreator.transponieren(b); 
   		
       	Fact2D<double[][], double[][]> facts1 = Fact2D.fact(trB, trA);
   		double[][] trB_plus_trA = myMtrxAdder.solve(MathProblem.ADD, facts1);
   		
-  		MyAssertEquals.assertMatrixEquals(trAB, trB_plus_trA, delta);
+  		MyAssertEquals.assertMatrixEquals(tr_aPlusb, trB_plus_trA, delta);
 
   		
   	}

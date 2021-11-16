@@ -3,10 +3,6 @@ package de.lab4inf.mxr.linearalgebra;
 import static java.lang.String.format;
 
 import java.util.Objects;
-
-
-
-
 import de.lab4inf.mxr.core.Fact2D;
 import de.lab4inf.mxr.core.Mops;
 import de.lab4inf.mxr.core.NoSolutionException;
@@ -41,8 +37,8 @@ public class MatrxMult implements Mops<MathProblem, Fact2D<double[][], double[][
 		double[][] result = new double[zeilenZahl1][spaltenZahl2];
 		
 	
-		for(int i=0; i< zeilenZahl1; i++ )
-			for( int j=0; j < spaltenZahl2; j++)
+		for(int i=0; i< result.length; i++ )
+			for( int j=0; j < result[0].length; j++)
 				for( int k=0 ; k< spaltenZahl1; k++)
 					result[i][j] += matrix1[i][k]* matrix2[k][j];			
 		

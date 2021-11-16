@@ -36,7 +36,7 @@ public class MatrxVecMultTester {
     }
 	
 	
-	//  mutli matrix*vec{0.0} 
+	//  mutli matrix*VEC{0.0} 
     @Test
     void multMatrixNullVecTest() {
     	
@@ -56,15 +56,12 @@ public class MatrxVecMultTester {
 		}
     	double[][] a= MatrixCreator.createRndMatrix(n, m);
     	
-    	
-    
-        
         Fact2D<double[][], double[]> facts = Fact2D.fact(a, vec);
         double[] actual = myMatVecMult.solve(MathProblem.MULT, facts);
         MyAssertEquals.assertVectorEquals(expected, actual,tolerance);
     }
 	
-	// simple mutli matrix*vec 
+	// SIMPLE mutli matrix*vec 
     @Test
     void multMatrixTest1() {
         expected = new double[] {5.0, 8.0};

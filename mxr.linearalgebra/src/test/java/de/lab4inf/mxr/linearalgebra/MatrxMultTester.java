@@ -62,7 +62,7 @@ public class MatrxMultTester {
     	this.myMtrxMulti = new MatrxMult();
     }
     
-    // simple mutli matrix 1 
+    // SIMPLE mutli matrix 1 
     @Test
     void multMatrixTest1() {
         expected = new double[][]{
@@ -75,7 +75,7 @@ public class MatrxMultTester {
         MyAssertEquals.assertMatrixEquals(expected, actual,tolerance);
     }
 
-    // simple mutli matrix 2
+    // SIMPLE mutli matrix 2
     @Test
     void multMatrixTest2() {
         expected = new double[][]{
@@ -88,7 +88,7 @@ public class MatrxMultTester {
         MyAssertEquals.assertMatrixEquals(expected, actual,tolerance);
     }
 
-    //matrix mult (2,3)*(2,2)
+    //Wrong Dim : matrix mult (2,3)*(2,2)
     @Test
     void wrongDimMatrixTest() {
         try {
@@ -145,10 +145,10 @@ public class MatrxMultTester {
     	Fact2D<double[][], double[][]> facts = Fact2D.fact(a, b);
 		
 		double[][] ab = myMtrxMulti.solve(MathProblem.MULT, facts);
-		double[][] trAB = MatrixCreator.transpose(ab); 
+		double[][] trAB = MatrixCreator.transponieren(ab); 
 		
-		double[][] trA = MatrixCreator.transpose(a); 
-		double[][] trB = MatrixCreator.transpose(b); 
+		double[][] trA = MatrixCreator.transponieren(a); 
+		double[][] trB = MatrixCreator.transponieren(b); 
 		
     	Fact2D<double[][], double[][]> facts1 = Fact2D.fact(trB, trA);
 		double[][] trB_trA = myMtrxMulti.solve(MathProblem.MULT, facts1);

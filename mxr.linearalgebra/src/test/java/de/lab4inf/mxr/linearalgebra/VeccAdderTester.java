@@ -1,6 +1,5 @@
 package de.lab4inf.mxr.linearalgebra;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Random;
@@ -16,10 +15,7 @@ public class VeccAdderTester {
 
 	Mops<MathProblem, Fact2D<double[], double[]>, double[]> myVecAdder;
 
-    //TODO: static double tolerance = 5.2E-12;
-	
-	
-	
+    static double tolerance = 5.2E-12;
 	
 	
 	@BeforeEach
@@ -50,7 +46,7 @@ public class VeccAdderTester {
 		double[] actual = myVecAdder.solve(MathProblem.ADD, facts);
 		double[] expected = vec1;
 
-		assertArrayEquals(actual, expected);
+		MyAssertEquals.assertVectorEquals(actual, expected,tolerance);
 	}
 
 	// ( Double_Array , - Double_Array)
@@ -75,8 +71,7 @@ public class VeccAdderTester {
 		Fact2D<double[], double[]> facts = new Fact2D<double[], double[]>(vec1, vec2);
 		double[] actual = myVecAdder.solve(MathProblem.ADD, facts);
 
-		assertArrayEquals(actual, expected);
-		//TODO: assertArrayEquals(vec1, vec2, tolerance);
+		MyAssertEquals.assertVectorEquals(actual, expected,tolerance);
 	}
 
 	// ( Double_Array , Double_Array)
@@ -98,7 +93,7 @@ public class VeccAdderTester {
 		Fact2D<double[], double[]> facts = Fact2D.fact(vec1, vec2);
 		double[] actual = myVecAdder.solve(MathProblem.ADD, facts);
 
-		assertArrayEquals(actual, expected);
+		MyAssertEquals.assertVectorEquals(actual, expected,tolerance);
 	}
 
 	// (Exception: not same size)
@@ -138,7 +133,7 @@ public class VeccAdderTester {
 		
 		Fact2D<double[], double[]> facts = Fact2D.fact(vec1, vec2);
 		double[] actual = myVecAdder.solve(MathProblem.ADD,  facts);
-		assertArrayEquals(actual, expected);
+		MyAssertEquals.assertVectorEquals(actual, expected,tolerance);
 	}
 	
 	//Exception: falsches Problem 
