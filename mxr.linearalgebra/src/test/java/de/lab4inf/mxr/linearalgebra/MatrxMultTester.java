@@ -155,4 +155,6 @@ public class MatrxMultTester {
 		
 		MyAssertEquals.assertMatrixEquals(trAB, trB_trA, delta);
 	}
+	
+	
 }

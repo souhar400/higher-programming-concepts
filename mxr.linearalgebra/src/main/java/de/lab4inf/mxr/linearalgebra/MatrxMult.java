@@ -30,7 +30,7 @@ public class MatrxMult implements Mops<MathProblem, Fact2D<double[][], double[][
 		int spaltenZahl2 = matrix2[0].length;
 		int zeilenZahl2 = matrix2.length; 
 		
-		if(( spaltenZahl1 != zeilenZahl2)  ) 
+		if( (spaltenZahl1 != zeilenZahl2) ) 
 			throw new IllegalArgumentException("* Operation is impossible. The matrices have different dimensions");
 
 		@NonNull
