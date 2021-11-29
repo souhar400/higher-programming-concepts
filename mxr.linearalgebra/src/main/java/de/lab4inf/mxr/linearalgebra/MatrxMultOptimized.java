@@ -45,8 +45,7 @@ public class MatrxMultOptimized implements Mops<MathProblem, Fact3D<double[][], 
 
 		boolean concurrent = facts.w;
 
-		if (!concurrent) {
-
+		if (concurrent) {
 			// Executor provides methods to manage termination and produce a "Future" for
 			// tracking progess of tasks
 			// factory methods of the Executors factory Class
