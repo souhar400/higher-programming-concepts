@@ -1,6 +1,8 @@
 package de.lab4inf.mxr.linearalgebra.tools;
 
 import java.util.Random;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class MatrixCreator {
 	static Random rnd = new Random(); 
@@ -74,5 +76,12 @@ public class MatrixCreator {
 			}
 		}
 		return transponiert;
+	}
+
+	public static double[][] transpose(final double[][] matrix) {
+	    return IntStream.range(0, matrix[0].length)
+	    		.parallel()
+	    		.mapToObj(i -> Stream.of(matrix).mapToDouble(row -> row[i])
+	    		.toArray()).toArray(double[][]::new);
 	}
 }
