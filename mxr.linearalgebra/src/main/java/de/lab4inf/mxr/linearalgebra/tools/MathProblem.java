@@ -4,5 +4,6 @@ public enum MathProblem {
 	ADD,
 	MULT, 
 	KRMULT,
-	WRONG
+	WRONG,
+	OPTMULT
 }

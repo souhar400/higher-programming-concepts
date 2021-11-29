@@ -52,7 +52,6 @@ class Key<Problem, facts extends Fact> {
 			boolean rv= true;
 			for(Class<?> clazz: this.sig) {
 				rv = rv && clazz.equals(signature[i++]);
-				  //TODO: muss maybe raus ? 
 			}
 			return rv;
 		}

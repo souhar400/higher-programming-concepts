@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import de.lab4inf.mxr.core.Fact2D;
+import de.lab4inf.mxr.core.Fact3D;
+
 import de.lab4inf.mxr.core.NoSolutionException;
 import de.lab4inf.mxr.engine.MXREngine;
 import de.lab4inf.mxr.linearalgebra.tools.MathProblem;
@@ -97,5 +99,24 @@ public class LinearAlgebraPluginTester {
 		double[] result = engine.solve(MathProblem.MULT, Fact2D.fact(matrixB, vectorB));
 		MyAssertEquals.assertVectorEquals(expected, result, delta);
 	}
+	
+	// Test parallel Matrix Multiplication
+	@Test
+	void testParMatrixMult() {
+		double[][] expected = { { 2.0, 4.0 },
+								{ 8.0, 11.0 } };
+		double[][] result = engine.solve(MathProblem.OPTMULT, Fact3D.fact(matrixA, matrixB, true));
+		MyAssertEquals.assertMatrixEquals(expected, result, delta);
+	}
+	
+	// Test seriell Matrix Multiplication
+		@Test
+		void testSerMatrixMult() {
+			double[][] expected = { { 2.0, 4.0 },
+									{ 8.0, 11.0 } };
+			double[][] result = engine.solve(MathProblem.OPTMULT, Fact3D.fact(matrixA, matrixB, false));
+			MyAssertEquals.assertMatrixEquals(expected, result, delta);
+		}
+	
 	
 }
