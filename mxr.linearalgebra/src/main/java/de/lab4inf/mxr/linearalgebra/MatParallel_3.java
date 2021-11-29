@@ -39,7 +39,7 @@ public class MatParallel_3 implements Mops<MathProblem, Fact3D<double[][], doubl
 		double[][] transposeMat = MatrixCreator.transpose(matrix2);
 
 		ExecutorService executor = Executors.newFixedThreadPool(16);
-		List<Callable<?>> tasks = new ArrayList<>();
+		List<Callable<Object>> tasks = new ArrayList<>();
 		for(int i = 0; i<result.length; i++) {
 			final int tnum = i;
 			tasks.add(Executors.callable(()->{
