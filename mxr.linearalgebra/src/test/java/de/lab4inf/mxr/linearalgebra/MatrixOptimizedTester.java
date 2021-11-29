@@ -188,7 +188,7 @@ public class MatrixOptimizedTester {
         System.out.println("-----+-----------+----------+------+----------+-------+---------+--------");
 
         
-        for (int n = 128; n <= 2048; n*=2) {
+        for (int n = 128; n <= 4096; n*=2) {
             double[][] matrixA = MatrixCreator.createRndMatrix(n,n);
             double[][] matrixB = MatrixCreator.createRndMatrix(n,n);
             
