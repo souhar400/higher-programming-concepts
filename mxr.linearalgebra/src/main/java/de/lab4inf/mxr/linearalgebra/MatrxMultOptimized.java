@@ -15,7 +15,6 @@ import de.lab4inf.mxr.core.NoSolutionException;
 import de.lab4inf.mxr.linearalgebra.tools.MathProblem;
 import de.lab4inf.mxr.linearalgebra.tools.MatrixCreator;
 
-//Source : www.baeldung.com/java-executor-service-tutorial
 
 public class MatrxMultOptimized implements Mops<MathProblem, Fact3D<double[][], double[][], Boolean>, double[][]> {
 
@@ -46,21 +45,13 @@ public class MatrxMultOptimized implements Mops<MathProblem, Fact3D<double[][], 
 		boolean concurrent = facts.w;
 
 		if (concurrent) {
-			// Executor provides methods to manage termination and produce a "Future" for
-			// tracking progess of tasks
-			// factory methods of the Executors factory Class
-			// Thread pool implementation
+
 			ExecutorService executor = Executors.newCachedThreadPool();
 
-			// The submit() method returns an object or a collection
 			List<Future<Boolean>> futures = new ArrayList<>(result.length);
 			for (int i = 0; i < result.length; i++) {
-				// TODO:
 				int aktuel = i;
 
-				// submits a Callable task to the Executor Service and return a result of type Future
-				// which allows us to get the result of a task's execution or to check the tasks's status (is it running)
-				// Task
 				Future<Boolean> future = executor.submit(() -> {
 					for (int j = 0; j < result[0].length; j++) {
 						result[aktuel][j] = vectorSkalarProdukt(matrix1[aktuel], transposed[j]);
@@ -73,7 +64,6 @@ public class MatrxMultOptimized implements Mops<MathProblem, Fact3D<double[][], 
 
 			for (Future<Boolean> ft : futures) {
 				try {
-					// blocking method, wait for the computation to end 
 					ft.get();
 				} catch (Exception e) {
 					e.printStackTrace();
