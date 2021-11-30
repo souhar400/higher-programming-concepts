@@ -130,7 +130,7 @@ public class MatrxMultTester {
 		}
 	}
     
-
+    /*
 	//Tr( A.B) = Tt(B).Tr(A)
 	@Test
 	void multTranspTest() {
@@ -155,6 +155,6 @@ public class MatrxMultTester {
 		
 		MyAssertEquals.assertMatrixEquals(trAB, trB_trA, delta);
 	}
-	
+	*/
 	
 }

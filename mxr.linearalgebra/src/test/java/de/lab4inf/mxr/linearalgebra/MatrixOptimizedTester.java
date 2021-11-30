@@ -211,8 +211,8 @@ public class MatrixOptimizedTester {
             double pi = 0.0;
             if (speedUp > 1) {
                 int processors = Runtime.getRuntime().availableProcessors();
-                double sigma = (processors - speedUp) / (speedUp * (processors - 1));
-                pi =  (1 - sigma)*100;
+                pi = ((processors* (speedUp-1)) / (speedUp*(processors - 1)))*100;
+                
             }
 
             System.out.println(String.format("%5d|%11d|%10d|%6.1f|%10d|%7.1f|%9.1f|%.1f", n, baseLine/1000, optimised/1000, seriellSpeedUp, parallelized/1000, (double)parallelSpeedUp, speedUp, pi));
