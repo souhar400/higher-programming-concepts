@@ -60,7 +60,7 @@ double[][] m1,m2,m3;
 		assertThrows(IllegalArgumentException.class, () -> parallelmult.solve(MathProblem.WRONG, facts3d));		
 	}
 	
-    
+    /*
     @Test 
     void zeitMessungenTest() {
     	double delta = 1.0E-12;
@@ -105,4 +105,5 @@ double[][] m1,m2,m3;
             MyAssertEquals.assertMatrixEquals(baseResult, parallelResult, n*delta);
         }
     }
+    */
 }
