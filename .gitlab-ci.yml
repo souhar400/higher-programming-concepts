@@ -1,4 +1,5 @@
-image: gradle:7.2.0-jdk17
+image: git.fh-muenster.de:4567/winter/hpk2021-docker
+# image: gradle:7.2.0-jdk17
 # image: gradle:7.2.0-jdk16
 # image: gradle:6.6.1-jdk11
 # =========================================================== #
