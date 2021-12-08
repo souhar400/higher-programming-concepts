@@ -27,14 +27,12 @@ class DifferentiatorTest {
     @Test
     void dummyTest() {
     	
-    	MXRFunction sinFunc = (x) -> Math.sin(x);
+    	double actual, expected; 
+    	double eps=1.E-5, x = 1.5;
+
+    	expected = -sinFunc.eval(x);    	
+    	actual = Differentiator.diff(cosFunc, x, eps);
     	
-    	double result, expected, eps=2*Differentiator.EPS, x = 1.5;
-  
-    	expected = cosFunc.eval(x);
-    	
-    	result = Differentiator.diff(sinFunc, x, eps);
-    	
-    	assertEquals(expected, result, eps);
+    	assertEquals(expected, actual, eps);
     }
 }
