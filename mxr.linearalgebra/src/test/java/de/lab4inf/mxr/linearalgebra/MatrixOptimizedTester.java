@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.util.Random;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import de.lab4inf.mxr.core.Fact2D;
@@ -178,6 +179,7 @@ public class MatrixOptimizedTester {
     
     
     @Test 
+    @Disabled
     void zeitMessungenTest() {
     	double delta = 1.0E-12;
         long naivStart, naivEnde, seriellEnde, optimised, parallelized, baseLine;
@@ -220,5 +222,7 @@ public class MatrixOptimizedTester {
             MyAssertEquals.assertMatrixEquals(baseResult, parallelResult, n*delta);
         }
     }
+    
+    
     
 }

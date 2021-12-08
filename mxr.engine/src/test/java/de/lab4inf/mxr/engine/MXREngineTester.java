@@ -5,12 +5,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import de.lab4inf.mxr.core.Fact;
 import de.lab4inf.mxr.core.Fact2D;
 import de.lab4inf.mxr.core.FactFactory;
 import de.lab4inf.mxr.core.FactVA;
+import de.lab4inf.mxr.core.MXR;
 import de.lab4inf.mxr.core.Mops;
 import de.lab4inf.mxr.core.NoSolutionException;
 
@@ -54,7 +56,9 @@ class MXREngineTester {
 		assertNotNull(engine.findSolver("ADD_VARNUM", va));
 		
 	}
+	
 	@Test 
+	@Disabled
 	void testSolve(){
 		engine.register(MXREngineTester.PROBLEM, dummy2D, myAdder);
 		engine.register(MXREngineTester.VAR_PROBLEM, va, myVarDoubleAdder);
@@ -67,4 +71,15 @@ class MXREngineTester {
 	void testNoSolution(){
 		assertThrows(NoSolutionException.class, ()-> engine.solve("ADD_VARNUM", va));
 	}
+	
+	@Test 
+	void testSolveWithGetEngine(){
+		MXR myEngine = MXR.getEngine(); 
+		myEngine.register(MXREngineTester.PROBLEM, dummy2D, myAdder);
+		Double retVal = myEngine.solve("ADD_NUM", dummy2D);
+		assertEquals(3.0, retVal);
+	}
+	
+	
+	
 }

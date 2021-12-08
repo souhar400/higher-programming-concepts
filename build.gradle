@@ -4,6 +4,7 @@
 
 plugins {
     id 'java'
+    id 'org.javamodularity.moduleplugin' version '1.8.10' apply false
 }
 
 dependencies {
@@ -11,6 +12,7 @@ dependencies {
 	implementation project(':mxr.engine')
 	implementation project(':mxr.client')
 	implementation project(':mxr.linearalgebra')
+	implementation project(':mxr.math')
 }
 
 java {
@@ -54,11 +56,12 @@ allprojects  {
 } // allprojects
 
 subprojects  {
+	apply plugin: "org.javamodularity.moduleplugin" 
 	plugins.withType(JavaPlugin).configureEach {
 		java {
 			sourceCompatibility = JavaVersion.VERSION_16
 			targetCompatibility = JavaVersion.VERSION_16
-			modularity.inferModulePath = false
+			modularity.inferModulePath = true
 			
 		   // withJavadocJar()
 		   // withSourcesJar()
