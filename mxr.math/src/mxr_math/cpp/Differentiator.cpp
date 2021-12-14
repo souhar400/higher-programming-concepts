@@ -14,10 +14,7 @@ double differentiate(Function &f, double x, double eps)
 	int n;
 	double actualAblt, lastAblt;
 
-	//double h = 0.0000099;
-	//double h = cbrt(DBL_EPSILON*2.0);
-	//double h = cbrt(DBL_EPSILON*2.0);
-	//double h = 0.000001, diff, lastDiff;
+	//double h = 1e-5;
 	double h= pow(DBL_EPSILON*2.0, (1.0/3.0));
 
 	lastAblt = (f(x+h)-f(x-h))/(2.0*h);

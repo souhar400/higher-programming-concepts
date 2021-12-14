@@ -5,32 +5,64 @@
 #include<float.h>
 
 
+double minus_sinus(double x){
+	return -sin(x);
+}
+
+double id(double x){
+	return x;
+}
+
+double one_fct(double x){
+	return 1;
+}
+
+double x_quadrat(double x) {
+	return x*x;
+}
+
+double zwei_x(double x) {
+	return 2*x;
+}
+
+double logStrich(double x) {
+	return 1.0/x;
+}
+
+
+void testF (FctPointer myf, FctPointer mydf, double von, double bis) {
+	double dy, eps=5.E-10,x;
+
+		Function f = Function(myf);
+		Function df = Function(mydf);
+
+		for (x = von; x <= bis; x += 0.25) {
+				dy = differentiate (f, x, eps);
+				assert(abs(dy - df(x)) < eps);
+			}
+		printf("\terfolgreich\n\n");
+}
+
 
 int main(int argc, char *argv[])
 {
-	double dy,df, eps=1.E-5, x=1.5;
+	printf("sin(x) Test:\n");
+	testF(sin, cos , 0, 1);
 
-	// wrap the C sine function into our C++ Warper class
-	Function f = Function(sin);
+	printf("cos(x) Test:\n");
+	testF(cos, minus_sinus, 0, 1);
 
-	// cosine is the true derivative of sine
-	df = cos(x);
+	printf("exp(x) Test:\n");
+	testF(exp, exp, 0, 2);
 
-	// lets see what our implementation does
-	dy = differentiate (f, x, eps);
+	printf("x Test:\n");
+	testF(id,one_fct , 0, 1);
 
+	printf("x² Test:\n");
+	testF(x_quadrat , zwei_x , 0, 1);
 
-	printf("x       expected= cos(x)     	dsin(x)                             abs(dy-df)          	abs(dy-df)<eps? \n");
-	printf("%.2f        %6.2f               %6.2f              %6.30f		%d", x, df, dy, abs(dy-df), abs(dy-df)<eps);
-
-	//double h= 0.0000099 - pow((DBL_EPSILON/1.0), (1.0/3.0));
-	double h= 0.0000099 - pow((3.0 * DBL_EPSILON), (1.0/3.0));
-
-
-	printf("\n Eplsion von Computer ist: %6.30f", h);
-
-
-	// compare the difference within the C assert
-	assert(abs(dy-df) < eps);
-
+	printf("log(x) Test:\n");
+	testF(log , logStrich , 0.01, 5);
 }
+
+

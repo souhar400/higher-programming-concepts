@@ -36,6 +36,7 @@ class MXREngineTester {
 		engine = new MXREngine();
 		dummy2D = FactFactory.facts(1.0, 2.0);
 		dummy3D = FactFactory.facts(1.0, 2.0, 3.0);
+		engine.register(MXREngineTester.PROBLEM, dummy2D, myAdder);
 		va = new FactVA<>(1.0, 5.0, 7.0, 13.5);
 	}
 	@Test
@@ -74,9 +75,10 @@ class MXREngineTester {
 	
 	@Test 
 	void testSolveWithGetEngine(){
-		MXR myEngine = MXR.getEngine(); 
+		MXR myEngine = MXR.getEngine(); 		
 		myEngine.register(MXREngineTester.PROBLEM, dummy2D, myAdder);
-		Double retVal = myEngine.solve("ADD_NUM", dummy2D);
+		Double retVal = myEngine.solve(MXREngineTester.PROBLEM, dummy2D);
+		assert(engine.getClass() == myEngine.getClass()); 	
 		assertEquals(3.0, retVal);
 	}
 	

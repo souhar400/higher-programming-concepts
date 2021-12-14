@@ -2,6 +2,10 @@
  * Modified build script by N. Wulff
  */
 
+// Source: https://plugins.gradle.org/plugin/org.javamodularity.moduleplugin
+// Source: https://github.com/java9-modularity/gradle-modules-plugin
+
+
 plugins {
     id 'java'
     id 'org.javamodularity.moduleplugin' version '1.8.10' apply false

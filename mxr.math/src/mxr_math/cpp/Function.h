@@ -45,6 +45,7 @@ public:
 	Function(FctPointer ptr) : fp(ptr) {assert(fp!=0);}
 	virtual ~Function() {};
 	virtual double operator()(const double x) const {assert(fp!=0); return fp(x);}
+
 };
 
 #endif /* SRC_MXR_MATH_CPP_FUNCTION_H_ */
