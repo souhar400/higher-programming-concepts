@@ -25,8 +25,16 @@ double zwei_x(double x) {
 	return 2*x;
 }
 
-double logStrich(double x) {
+double dlog(double x) {
 	return 1.0/x;
+}
+
+double hyp(double x){
+	return 1.0/x;
+}
+
+double dhyp(double x){
+	return -1.0/(x*x);
 }
 
 
@@ -62,7 +70,10 @@ int main(int argc, char *argv[])
 	testF(x_quadrat , zwei_x , 0, 1);
 
 	printf("log(x) Test:\n");
-	testF(log , logStrich , 0.01, 5);
+	testF(log , dlog, 0.01, 5);
+
+	printf("hyp Test:\n");
+	testF(hyp , dhyp, 0.1, 3.1);
 }
 
 
