@@ -76,9 +76,10 @@ class MXREngineTester {
 	@Test 
 	void testSolveWithGetEngine(){
 		MXR myEngine = MXR.getEngine(); 		
+		assert(engine.getClass() == myEngine.getClass()); 	
+		
 		myEngine.register(MXREngineTester.PROBLEM, dummy2D, myAdder);
 		Double retVal = myEngine.solve(MXREngineTester.PROBLEM, dummy2D);
-		assert(engine.getClass() == myEngine.getClass()); 	
 		assertEquals(3.0, retVal);
 	}
 	
