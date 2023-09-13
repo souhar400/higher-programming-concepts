@@ -13,12 +13,12 @@ Das Projekt findet im Rahmen des Moduls Höhere Programmierungskonzepte im 3. Se
 
 
 ## Inhalte
-• Professionelles Build Management mit Maven und Gradle und CI/CD per GIT.
-• Das Java Module-System seit dem JDK 1.9
-• Parallele Java Threads und deren Synchronisierung.
-• Die Java Generics des JDK 1.5
-• Die Java Reflection API und das Einbinden anderer Sprachen in die JVM: von Java zu C/C++ per JNI. 
-• static und default Interface Methoden des JDK 1.8.
+- Professionelles Build Management mit Maven und Gradle und CI/CD per GIT.
+- Das Java Module-System seit dem JDK 1.9
+- Parallele Java Threads und deren Synchronisierung.
+- Die Java Generics des JDK 1.5
+- Die Java Reflection API und das Einbinden anderer Sprachen in die JVM: von Java zu C/C++ per JNI. 
+- static und default Interface Methoden des JDK 1.8.
 
 
 ## Beschreibung des Praktikums
